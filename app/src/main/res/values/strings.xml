@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CalcuList</string>
+    <string name="enter_number">enter number</string>
+    <string name="enter_text_description">enter text</string>
+    <string name="value_hint">value</string>
+    <string name="name_hint">name</string>
+    <string name="operation">Sum</string>
+</resources>

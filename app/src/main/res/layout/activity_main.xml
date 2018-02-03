@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.claudiasichting.calculist.MainActivity">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mainLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <AutoCompleteTextView
+            android:id="@+id/editTextKey"
+            android:layout_toStartOf="@+id/editTextValue"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:gravity="start"
+            android:nextFocusForward="@+id/editTextValue"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:lines="1"/>
+
+        <EditText
+            android:id="@+id/editTextValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:hint="@string/value_hint"
+            android:gravity="end"
+            android:inputType="textNoSuggestions"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:lines="1"/>
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/editTextValue"
+            android:layout_below="@+id/editTextKey" />
+
+        <!--<EditText-->
+            <!--android:id="@+id/editTextKey"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:hint="@string/enter_text_description"-->
+            <!--android:imeOptions="actionDone"-->
+            <!--android:lines="1"-->
+            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+            <!--android:focusedByDefault="true"-->
+            <!--android:nextFocusDown="@+id/editTextValue"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_editor_absoluteY="0dp" />-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/editTextValue"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:hint="@string/enter_number"-->
+            <!--android:imeOptions="actionDone"-->
+            <!--android:lines="1"-->
+            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+            <!--tools:layout_editor_absoluteX="0dp"-->
+            <!--tools:layout_editor_absoluteY="0dp" />-->
+
+    </RelativeLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
