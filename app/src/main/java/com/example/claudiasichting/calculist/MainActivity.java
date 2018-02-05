@@ -1,21 +1,15 @@
 package com.example.claudiasichting.calculist;
 
 import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class MainActivity extends ListActivity {
 
@@ -32,15 +26,14 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         EditText editText = (EditText) findViewById(R.id.editTextValue);
 
-        entries.add(Pair.create("Sum", "0"));
-
-//        ArrayAdapter<Pair<String,String>> adapter = new ArrayAdapter<Pair<String,String>>(this,
-//                android.R.layout.simple_list_item_1, entries);
-//        setListAdapter(adapter);
+        //entries.add(Pair.create("Sum", "0"));
 
         EntryAdapter adapter1 = new EntryAdapter(this, entries);
         ListView listView = (ListView) findViewById(android.R.id.list);
         setListAdapter(adapter1);
+
+        TextView textView = findViewById(R.id.textViewResult);
+        textView.setText(String.valueOf(0.0));
 
         editText.setOnKeyListener(new EditText.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -67,19 +60,17 @@ public class MainActivity extends ListActivity {
 
         entries.add(0, Pair.create(editTextKey.getText().toString(), editTextValue.getText().toString()));
 
-        int sum = 0;
-        for(Pair<String, String> entry :entries.subList(0, entries.size()-1)){
-            sum += Integer.parseInt(entry.second);
+        float sum = 0;
+        for(Pair<String, String> entry :entries.subList(0, entries.size())){
+            sum += Float.parseFloat(entry.second);
         }
 
-        entries.set(entries.size()-1,Pair.create( getString(R.string.operation), String.valueOf(sum)));
+        //entries.set(entries.size()-1,Pair.create( getString(R.string.operation), String.valueOf(sum)));
+
+        TextView textView = findViewById(R.id.textViewResult);
+        textView.setText(String.valueOf(sum));
 
         Toast.makeText(MainActivity.this, editTextKey.getText() + " " + editTextValue.getText().toString(), Toast.LENGTH_LONG).show();
-
-
-//        ArrayAdapter<Pair<String, String>> adapter = new ArrayAdapter<Pair<String, String>>(this,
-//                R.layout.calcu_list_item, R.id.calcu_list_item_value, entries);
-//        setListAdapter(adapter);
 
         EntryAdapter adapter1 = new EntryAdapter(this, entries);
         ListView listView = (ListView) findViewById(android.R.id.list);
@@ -90,8 +81,8 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
 
-        String item = (String) getListAdapter().getItem(position);
-        Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
+        Pair<String,String> item = entries.get(position);
+        Toast.makeText(this, item.first + " " + item.second + " selected", Toast.LENGTH_LONG).show();
     }
 
 }

@@ -86,8 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTextValue"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="40dp"
-            />
+            android:layout_marginBottom="40dp"/>
 
         <!--<EditText-->
             <!--android:id="@+id/editTextKey"-->
