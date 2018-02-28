@@ -8,6 +8,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -35,16 +36,7 @@ public class MainActivity extends ListActivity {
 
     //public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
-    ArrayList<Pair<String, String>> entries = new ArrayList<>(Arrays.asList(
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("b", "1"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0"),
-            new Pair<String, String>("a", "0")));
+    ArrayList<Pair<String, String>> entries = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +83,8 @@ public class MainActivity extends ListActivity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if (((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) || (keyCode == EditorInfo.IME_ACTION_DONE) ) {
                     // Perform action on key press
 
                     sendMessage(v);
@@ -102,8 +94,32 @@ public class MainActivity extends ListActivity {
             }
         });
 
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.i("e","Enter pressed");
+                }
+                return false;
+            }
+        });
+
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                  /* Write your logic here that will be executed when user taps next button */
+
+                    sendMessage(v);
+                    handled = true;
+                }
+                return handled;
+            }
+        });
 
     }
+
+
 
     /**
      * Called when the user taps the Send button
