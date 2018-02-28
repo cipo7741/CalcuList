@@ -11,21 +11,22 @@
         android:id="@+id/mainLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@color/colorBackground">
+        android:background="@color/colorBackground"
+        android:orientation="horizontal">
 
         <AutoCompleteTextView
             android:id="@+id/editTextHeaderKey"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/editTextHeaderValue"
+            android:background="@color/colorPrimary"
             android:gravity="start"
             android:hint="@string/name_hint"
-            android:imeOptions="actionNext"
-            android:background="@color/colorPrimary"
+            android:imeOptions="flagNavigateNext"
             android:lines="1"
             android:maxLines="1"
             android:nextFocusForward="@+id/editTextHeaderValue"
+            android:singleLine="true"
             android:textStyle="bold"
             android:typeface="normal" />
 
@@ -34,15 +35,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
             android:gravity="end"
             android:hint="@string/value_hint"
-            android:imeOptions="actionDone"
-            android:background="@color/colorPrimary"
+            android:imeOptions="flagNavigateNext"
             android:inputType="textNoSuggestions"
             android:lines="1"
             android:maxLines="1"
+            android:singleLine="true"
             android:textStyle="bold"
-            android:typeface="normal"/>
+            android:typeface="normal" />
 
         <AutoCompleteTextView
             android:id="@+id/editTextKey"
@@ -51,17 +53,18 @@
             android:layout_alignBaseline="@+id/editTextValue"
             android:layout_alignBottom="@+id/editTextValue"
             android:layout_toStartOf="@+id/editTextHeaderValue"
+            android:backgroundTint="@color/colorAccent"
             android:fontFamily="sans-serif-condensed"
             android:hint="@string/name_hint"
-            android:textColorHint="@color/darkGray"
-            android:imeOptions="actionNext"
+            android:imeOptions="flagNavigateNext"
             android:lines="1"
             android:maxLines="1"
             android:nextFocusForward="@+id/editTextValue"
+            android:singleLine="true"
             android:textColor="@color/colorEditText"
+            android:textColorHint="@color/darkGray"
             android:textStyle="italic"
-            android:typeface="normal"
-            android:backgroundTint="@color/colorAccent"/>
+            android:typeface="normal" />
 
         <EditText
             android:id="@+id/editTextValue"
@@ -69,60 +72,34 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editTextHeaderKey"
+            android:backgroundTint="@color/colorAccent"
             android:gravity="end"
             android:hint="@string/value_hint"
-            android:textColorHint="@color/darkGray"
             android:imeOptions="actionDone"
             android:inputType="textNoSuggestions"
             android:lines="1"
             android:maxLines="1"
+            android:singleLine="true"
             android:textColor="@color/colorEditText"
-            android:textStyle="italic"
-            android:backgroundTint="@color/colorAccent"/>
+            android:textColorHint="@color/darkGray"
+            android:textStyle="italic" />
 
         <ListView
             android:id="@android:id/list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextValue"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="40dp"
-            />
-
-        <!--<EditText-->
-            <!--android:id="@+id/editTextKey"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:hint="@string/enter_text_description"-->
-            <!--android:imeOptions="actionDone"-->
-            <!--android:lines="1"-->
-            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-            <!--android:focusedByDefault="true"-->
-            <!--android:nextFocusDown="@+id/editTextValue"-->
-            <!--tools:layout_editor_absoluteX="0dp"-->
-            <!--tools:layout_editor_absoluteY="0dp" />-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/editTextValue"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:hint="@string/enter_number"-->
-            <!--android:imeOptions="actionDone"-->
-            <!--android:lines="1"-->
-            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
-            <!--tools:layout_editor_absoluteX="0dp"-->
-            <!--tools:layout_editor_absoluteY="0dp" />-->
+            android:layout_below="@+id/editTextValue"
+            android:layout_marginBottom="40dp" />
 
         <TextView
             android:id="@+id/textViewOperation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/textViewResult"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toStartOf="@+id/textViewResult"
             android:text="@string/operation"
             android:textColor="@color/colorEditText"
             android:textSize="30sp"
@@ -132,8 +109,8 @@
             android:id="@+id/textViewResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp"
             android:text=""
             android:textColor="@color/colorEditText"
@@ -141,8 +118,6 @@
             app:layout_constraintRight_toRightOf="parent" />
 
     </RelativeLayout>
-
-
 
 
 </android.support.constraint.ConstraintLayout>

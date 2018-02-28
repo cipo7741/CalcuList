@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.claudiasichting.calculist.R;
-
 import java.util.ArrayList;
 
 /**
@@ -26,29 +24,26 @@ public class EntryAdapter extends ArrayAdapter {
     }
 
 
-    @Override
 
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         // Get the data item for this position
-
         Pair<String, String> entry = (Pair<String, String>) getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
-
-        if (convertView == null) {
-
+//        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.calcu_list_item, parent, false);
-
-        }
+//        }
 
         // Lookup view for data population
         TextView key = (TextView) convertView.findViewById(R.id.calcu_list_item_key);
         TextView value = (TextView) convertView.findViewById(R.id.calcu_list_item_value);
 
-        if(position % 2 == 0){
-            key.setBackgroundColor(ContextCompat.getColor(convertView.getContext(), R.color.darkGray));
-            value.setBackgroundColor(ContextCompat.getColor(convertView.getContext(), R.color.darkGray));
+        if (position % 2 == 0) {
+            convertView.setBackgroundColor(ContextCompat.getColor(convertView.getContext(), R.color.darkGray));
+//            key.setBackgroundColor(ContextCompat.getColor(convertView.getContext(), R.color.darkGray));
+//            value.setBackgroundColor(ContextCompat.getColor(convertView.getContext(), R.color.darkGray));
         }
 
         // Populate the data into the template view using the data object
@@ -56,10 +51,7 @@ public class EntryAdapter extends ArrayAdapter {
         value.setText(entry.second);
 
 
-
-
         // Return the completed view to render on screen
-
         return convertView;
 
     }
