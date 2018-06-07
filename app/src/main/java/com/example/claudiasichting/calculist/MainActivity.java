@@ -52,7 +52,7 @@ public class MainActivity extends ListActivity {
 
         TextView textView = findViewById(R.id.textViewResult);
 
-        float sum = 0;
+        int sum = 0;
 
         try {
             FileInputStream in = openFileInput("clacu_list_table_file.txt");
@@ -66,7 +66,7 @@ public class MainActivity extends ListActivity {
                 System.out.println("Do something with " + line);
                 String[] values = line.split(",");
                 entries.add(new Pair<String, String>(values[0], values[1]));
-                sum += Float.parseFloat(values[1]);
+                sum += 100 * Float.parseFloat(values[1]);
             }
         } catch (FileNotFoundException e) {
 //            e.printStackTrace();
@@ -77,7 +77,7 @@ public class MainActivity extends ListActivity {
 
         EntryAdapter adapter1 = new EntryAdapter(this, entries);
         setListAdapter(adapter1);
-        textView.setText(String.valueOf(sum));
+        textView.setText(String.valueOf(sum/100.0));
 
         editText.setOnKeyListener(new EditText.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
