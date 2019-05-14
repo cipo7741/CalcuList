@@ -1,0 +1,78 @@
+@startuml
+
+class Entry {
+    String word
+    Int value
+}
+
+class EntryDao {
+    +getAllEntries() : LiveData<List<Entry>>
+    +insert( Entry )
+    +deleteAll()
+}
+
+class EntryListAdapter{
+    LayoutInflater inflater
+    List<Entry> entries
+    +onCreateViewHolder( ViewGroup, Int)
+    +onBindViewHolder( WordViewHolder, Int)
+    +setEntries( List<Entry>)
+    +getItemCount()
+}
+
+class WordViewHolder{
+    TextView itemViewLeft
+    TextView itemViewRight
+}
+
+class EntryRepository{
+    LiveData<List<Entry>> allEntries
+    insert( Entry )
+    deleteAll()
+}
+
+class EntryRoomDatabase{
+    {abstract} entryDao()
+    -EntryRoomDatabase INSTANCE
+    getDatabase(Context, CoroutineScope): EntryRoomDatabase
+}
+
+class EntryDatabaseCallback{
+    CoroutineScope scope
+    onOpen( SupportSQLiteDatabase )
+    populateDatabase( EntryDao )
+}
+
+class EntryViewModel {
+    -repository: EntryRepository
+    +allEntries: LiveData<List<Entry>>
+    +insert( Entry )
+    +deleteAll()
+}
+class MainActivity {
+    EntryViewModel entryViewModel
+    EditText editWordView
+    onCreate( Bundle? )
+    sendMessage()
+    onCreateOptionsMenu( Menu)
+    onOptionsItemSelected( MenuItem )
+    sortList()
+    clearList()
+}
+
+MainActivity -- EntryViewModel
+MainActivity -- EntryListAdapter
+EntryListAdapter -- Entry
+EntryListAdapter -- WordViewHolder
+EntryDao -- Entry
+EntryRoomDatabase -- Entry
+EntryViewModel -- Entry
+EntryRepository -- Entry
+EntryViewModel -- EntryRepository
+
+EntryRoomDatabase -- EntryDatabaseCallback
+EntryRoomDatabase -- EntryDao
+EntryDao -- EntryRepository
+
+
+@enduml
