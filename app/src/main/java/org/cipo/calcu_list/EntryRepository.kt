@@ -13,6 +13,11 @@ class EntryRepository(private val wordDao: EntryDao) {
     }
 
     @WorkerThread
+    suspend fun delete(entry: Entry) {
+        wordDao.delete(entry.id)
+    }
+
+    @WorkerThread
     suspend fun deleteAll() {
         wordDao.deleteAll()
     }

@@ -37,7 +37,7 @@
             android:nextFocusForward="@+id/autoCompleteTextViewName"
             android:padding="8dp"
             android:imeOptions="actionDone|flagNavigateNext"
-            android:inputType="numberSigned"
+            android:inputType="numberSigned|numberDecimal"
             android:lines="1"
             android:maxLines="1"
             android:singleLine="true"

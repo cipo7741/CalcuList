@@ -46,12 +46,12 @@ abstract class EntryRoomDatabase : RoomDatabase() {
             suspend fun populateDatabase(entryDao: EntryDao) {
                 // Start the app with a clean database every time.
                 // Not needed if you only populate on creation.
-                entryDao.deleteAll()
-
-                var word = Entry("Hello", 1)
-                entryDao.insert(word)
-                word = Entry("World!", 2)
-                entryDao.insert(word)
+//                entryDao.deleteAll()
+//
+//                var word = Entry("Hello", 1)
+//                entryDao.insert(word)
+//                word = Entry("World!", 2)
+//                entryDao.insert(word)
             }
         }
     }

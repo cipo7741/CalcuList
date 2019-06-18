@@ -8,4 +8,5 @@
     <color name="hintText">#8D8D8D8D</color>
     <color name="colorEditText">#000</color>
     <color name="colorListText">#fff</color>
+    <color name="colorTransp">#fff</color>
 </resources>

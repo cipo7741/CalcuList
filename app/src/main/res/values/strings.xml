@@ -7,4 +7,11 @@
     <string name="name_hint">name</string>
     <string name="value_hint">value</string>
     <string name="operation">sum</string>
+    <string name="dialog_delete_all_items">Delete the whole list?</string>
+    <string name="dialog_delete_all_items_yes">Yes</string>
+    <string name="dialog_delete_all_items_no">Cancel</string>
+    <string name="dialog_delete_all_items_explanation">There is no undo!</string>
+    <string name="toast_no_input">No Input</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
 </resources>

@@ -22,6 +22,10 @@ class EntryViewModel(application: Application) : AndroidViewModel(application) {
         repository.insert(entry)
     }
 
+    fun delete(entry: Entry) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(entry)
+    }
+
     fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteAll()
     }

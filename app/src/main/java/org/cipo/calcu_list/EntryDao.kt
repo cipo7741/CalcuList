@@ -15,6 +15,9 @@ interface EntryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(entry: Entry)
 
+    @Query("DELETE FROM entry_table where id =:entryID")
+    fun delete(entryID: Int)
+
     @Query("DELETE FROM entry_table")
     fun deleteAll()
 }
