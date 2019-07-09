@@ -1,4 +1,4 @@
-package org.cipo.calcu_list
+package org.cipo.calcu_list.db
 
 import android.content.Context
 import androidx.room.Database
@@ -33,26 +33,26 @@ abstract class EntryRoomDatabase : RoomDatabase() {
         private class EntryDatabaseCallback(
             private val scope: CoroutineScope
         ) : RoomDatabase.Callback() {
-
-            override fun onOpen(db: SupportSQLiteDatabase) {
-                super.onOpen(db)
-                INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.entryDao())
-                    }
-                }
-            }
-
-            suspend fun populateDatabase(entryDao: EntryDao) {
-                // Start the app with a clean database every time.
-                // Not needed if you only populate on creation.
+//
+//            override fun onOpen(db: SupportSQLiteDatabase) {
+//                super.onOpen(db)
+//                INSTANCE?.let { database ->
+//                    scope.launch(Dispatchers.IO) {
+//                        populateDatabase(database.entryDao())
+//                    }
+//                }
+//            }
+//
+//            fun populateDatabase(entryDao: EntryDao) {
+//                 Start the app with a clean database every time.
+//                 Not needed if you only populate on creation.
 //                entryDao.deleteAll()
 //
 //                var word = Entry("Hello", 1)
 //                entryDao.insert(word)
 //                word = Entry("World!", 2)
 //                entryDao.insert(word)
-            }
+//            }
         }
     }
 

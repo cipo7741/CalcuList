@@ -1,4 +1,4 @@
-package org.cipo.calcu_list
+package org.cipo.calcu_list.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,7 +9,9 @@ class Entry(
     @field:ColumnInfo(name = "word")
     var word: String?,
     @field:ColumnInfo(name = "value")
-    var value: Int?
+    var value: Long?,
+    @field:ColumnInfo(name = "selected")
+    var selected: Boolean? = false
 ) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
