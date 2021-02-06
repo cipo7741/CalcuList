@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private var countSelected: Int = 0
     private var countAll: Int = 0
 
-    val fragManager = supportFragmentManager
+    private val fragManager = supportFragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
